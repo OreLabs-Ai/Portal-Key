@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LYNODE DEMON KEY</title>
+    <style>
+        /* CSS VISUAL DEMON (SAMA SEPERTI YANG KAMU SUKA) */
+        body { margin: 0; height: 100vh; background-color: #000; background-image: radial-gradient(circle at center bottom, #4a0000, #000 70%); color: #fff; font-family: 'Courier New', monospace; display: flex; justify-content: center; align-items: center; overflow: hidden; }
+        .background-effects { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; }
+        .ember { position: absolute; bottom: -20px; width: 10px; height: 10px; background: rgba(255, 50, 50, 0.7); box-shadow: 0 0 15px 5px rgba(255, 0, 0, 0.5); border-radius: 50%; animation: rise 10s infinite linear; opacity: 0; }
+        .ember:nth-child(1) { left: 10%; animation-duration: 8s; } .ember:nth-child(2) { left: 20%; animation-duration: 12s; background: rgba(255, 100, 0, 0.7); } .ember:nth-child(3) { left: 50%; animation-duration: 14s; } .ember:nth-child(4) { left: 80%; animation-duration: 11s; }
+        @keyframes rise { 0% { transform: translateY(0); opacity: 0; } 20% { opacity: 1; } 100% { transform: translateY(-110vh); opacity: 0; } }
+        
+        /* CONTAINER */
+        .container { position: relative; text-align: center; padding: 30px; border: 3px solid #f00; border-radius: 15px; box-shadow: 0 0 30px rgba(255, 0, 0, 0.5); background: rgba(20, 0, 0, 0.8); backdrop-filter: blur(5px); z-index: 10; }
+        h1 { color: #f00; text-transform: uppercase; letter-spacing: 3px; text-shadow: 0 0 10px #f00; margin-top: 0; }
+        .key-box { font-size: 36px; font-weight: bold; background: #1a0000; padding: 20px; margin: 25px 0; border-radius: 8px; color: #ffaa00; letter-spacing: 3px; border: 2px solid #ff4400; animation: pulse 3s infinite alternate; }
+        @keyframes pulse { from { box-shadow: 0 0 10px #ff4400; } to { box-shadow: 0 0 25px #f00; } }
+        
+        /* ACCESS DENIED SCREEN */
+        .access-denied { text-align: center; display: none; z-index: 20; border: 2px solid #f00; padding: 40px; border-radius: 15px; background: rgba(10,0,0,0.95); box-shadow: 0 0 50px rgba(255,0,0,0.3); }
+        .btn-demon { background: #300; color: #f00; font-weight: bold; border: 1px solid #f00; padding: 15px 30px; text-decoration: none; display: inline-block; margin-top: 20px; transition: 0.3s; font-family: 'Courier New'; }
+        .btn-demon:hover { background: #f00; color: #000; box-shadow: 0 0 20px #f00; }
+    </style>
+</head>
+<body>
+    <div class="background-effects"><div class="ember"></div><div class="ember"></div><div class="ember"></div><div class="ember"></div></div>
+
+    <div id="accessDenied" class="access-denied">
+        <h1>⚠️ ACCESS DENIED ⚠️</h1>
+        <p>LINK EXPIRED OR IS INVALID.<br>PLEASE GET A NEW ACCESS LINK.</p>
+        <a href="https://linkvertise.com/1462244/hQYMTaDTa1jJ" class="btn-demon">GET NEW ACCESS</a>
+    </div>
+
+    <div id="realContent" style="display:none;" class="container">
+        <h1>LYNODE DEMON GATEWAY</h1>
+        <p style="color:#f44;font-weight:bold;">AUTHENTICATION REQUIRED</p>
+        <div class="key-box" id="keyDisplay">LOADING...</div>
+        <p style="color:#888;font-size:0.9em;">キーは常に更新されます</p>
+    </div>
+
+    <script>
+        // --- LOGIKA UTAMA (HARUS SINKRON) ---
+        
+        function getExpectedPassword() {
+            const date = new Date();
+            const year = date.getUTCFullYear();
+            const month = date.getUTCMonth() + 1;
+            const day = date.getUTCDate();
+            const hour = date.getUTCHours(); 
+
+            // RUMUS INI WAJIB SAMA DENGAN GATEWAY.HTML
+            let code = (year + month + day + hour) * 666; 
+            
+            // PREFIX WAJIB SAMA
+            return "LYNODE-DEMON-" + code;
+        }
+
+        function checkAccess() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const userPass = urlParams.get('access');
+            const correctPass = getExpectedPassword();
+
+            if (userPass === correctPass) {
+                // PASSWORD COCOK -> TAMPILKAN
+                document.getElementById('realContent').style.display = 'block';
+                document.getElementById('accessDenied').style.display = 'none';
+                generateKey();
+            } else {
+                // PASSWORD BEDA -> BLOKIR
+                document.getElementById('realContent').style.display = 'none';
+                document.getElementById('accessDenied').style.display = 'block';
+            }
+        }
+
+        function generateKey() {
+            const date = new Date();
+            const day = date.getUTCDate();
+            const month = date.getUTCMonth() + 1;
+            const year = date.getUTCFullYear();
+            let rawCode = (day * 157) + (month * 314) + (year * 12);
+            if (rawCode % 2 === 0) { rawCode = rawCode + 1111; }
+            document.getElementById("keyDisplay").innerText = "LYNODE-" + rawCode;
+        }
+
+        checkAccess();
+    </script>
+</body>
+</html>
